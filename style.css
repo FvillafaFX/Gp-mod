@@ -222,7 +222,6 @@ input[type="submit"].btn{
     margin-bottom: var(--margin-bottom--title);
     margin-top: var(--margin-top--title);
     line-height: 1.2;
-	color:var(--primary);
 }
 .h4-style{
     font-size: var(--font-size--h4);

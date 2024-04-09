@@ -86,7 +86,8 @@ html {
     padding-right: 16px;
     padding-left: 16px;
     flex-wrap: wrap;
-    background-size:cover;
+    background-size: cover;
+    position: relative;
 }
 .one-col{
     display: flex;
@@ -97,9 +98,9 @@ html {
 }
 .two-col{
     width: 50%;
-	  display: flex;
-	  flex-wrap: wrap;
-	flex-direction:column
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column
 }
 .three-col {
     width: 33%;

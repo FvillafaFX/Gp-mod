@@ -38,28 +38,28 @@ Updated: 2023-08-22 19:38:40
     /***GLOBAL FONT-SIZE****/
     --font-size--h1: clamp(24px, 2.8vw, 31px);
     --font-size--h2: clamp(18px, 2.5vw, 28px);
-	--font-size--h3: clamp(23px, 3vw, 36px);
-  --font-size--h4: clamp(20px, 2.5vw, 26px);
-	--font-size--h5: clamp(18px, 2.2vw, 24px);
+    --font-size--h3: clamp(23px, 3vw, 36px);
+    --font-size--h4: clamp(20px, 2.5vw, 26px);
+    --font-size--h5: clamp(18px, 2.2vw, 24px);
     --font-size--h6: clamp(18px, 1.9vw, 21px);
     --font-size--big: clamp(30px, 4.5vw, 62px);
     --font-size--body: 16px;
     --font-size--button: 18px;
-	--font-size--little-text: 12px;
+    --font-size--little-text: 12px;
     /***GLOBAL FONT-WEIGHT****/
     --font-weight--h1: 900;
     --font-weight--h2: 900;
-	--font-weight--h3: 900;
+    --font-weight--h3: 900;
     --font-weight--h4: 900;
-	--font-weight--h5: 900;
+    --font-weight--h5: 900;
     --font-weight--h6: 900;
     --font-weight--button: 900;
     /***GLOBAL FONT-FAMILY****/
     --font-family--h1: 'Poppins';
     --font-family--h2: 'Poppins';
-	--font-family--h3: 'Poppins';
+    --font-family--h3: 'Poppins';
     --font-family--h4: 'Poppins';
-	--font-family--h5: 'Poppins';
+    --font-family--h5: 'Poppins';
     --font-family--h6: 'Poppins';
     --font-family--button: 'Poppins';
     --font-family--body: 'Helvetica';
@@ -83,17 +83,17 @@ html {
 .section{
     display: flex;
     justify-content: center;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 16px;
+    padding-left: 16px;
     flex-wrap: wrap;
-	  background-size:cover;
+    background-size:cover;
 }
 .one-col{
     display: flex;
     justify-content: center;
     align-items: center;
-	width: 100%;
-	flex-direction:column
+    width: 100%;
+    flex-direction:column
 }
 .two-col{
     width: 50%;

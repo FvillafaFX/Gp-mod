@@ -200,53 +200,41 @@ input[type="submit"].btn{
 .btn-hdr:hover,.btn-hdr a:hover {background-color: var(--scondary);color:var(--primary);cursor:pointer}
 
 /****FONTS*****/
+h1, h2, h3, h4, h5, h6{
+    line-height: 1.2;
+    margin-bottom: var(--margin-bottom--title);
+    margin-top: var(--margin-top--title);
+    text-wrap:balance;
+}
 .h1-style{
     font-size: var(--font-size--h1);
     font-weight: var(--font-weight--h1);
     font-family: var(--font-family--h1);
-    margin-bottom: var(--margin-bottom--title);
-    margin-top: var(--margin-top--title);
-    line-height: 1.2;
 }
 .h2-style{
     font-size: var(--font-size--h2);
     font-weight: var(--font-weight--h2);
     font-family: var(--font-family--h2);
-    margin-bottom: var(--margin-bottom--title);
-    margin-top: var(--margin-top--title);
-    line-height: 1.2;
 }
 .h3-style{
     font-size: var(--font-size--h3);
     font-weight: var(--font-weight--h3);
     font-family: var(--font-family--h3);
-    margin-bottom: var(--margin-bottom--title);
-    margin-top: var(--margin-top--title);
-    line-height: 1.2;
 }
 .h4-style{
     font-size: var(--font-size--h4);
     font-weight: var(--font-weight--h4);
     font-family: var(--font-family--h4);
-    margin-bottom: var(--margin-bottom--title);
-    margin-top: var(--margin-top--title);
-    line-height: 1.2;
 }
 .h5-style{
     font-size: var(--font-size--h5);
     font-weight: var(--font-weight--h5);
     font-family: var(--font-family--h5);
-    margin-bottom: var(--margin-bottom--title);
-    margin-top: var(--margin-top--title);
-    line-height: 1.2;
 }
 .h6-style{
     font-size: var(--font-size--h6);
     font-weight: var(--font-weight--h6);
     font-family: var(--font-family--h6);
-    margin-bottom: var(--margin-bottom--title);
-    margin-top: var(--margin-top--title);
-    line-height: 1.2;
 }
 a {
 	color:var(--primary);

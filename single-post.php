@@ -13,15 +13,6 @@ while ( have_posts() ) :
 ?>
 
 <section class="section post-card min-site-width">
-    <!--<div class="author-info">
-        <p class="p-style"><?php
-			/*$content = get_post_field( 'post_content', get_the_ID() );
-			$word_count = str_word_count( strip_tags( $content ) );
-			$reading_time = ceil( $word_count / 200 );*/
-		  ?>
-		  <span class="post-reading-time"><?php /*echo $reading_time;*/ ?> min read</span>
-		</p>
-    </div>-->
     <div class="post-content">
 		<?php the_content(); ?>
 	</div>

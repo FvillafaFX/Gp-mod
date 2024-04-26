@@ -25,16 +25,6 @@ while ( have_posts() ) :
     <div class="post-content">
 		<?php the_content(); ?>
 	</div>
-	<div class="sign-col">
-		<img class="alignnone size-full wp-image-722" src="https://smithservicesaz.com/wp-content/uploads/2023/11/smith-plumbing-logo.png" alt="smith-plumbing-logo" width="244" height="153" />
-
-		<p><strong>SMITH PLUMBING, HEATING &amp; COOLING</strong></p>
-		<p><a href="https://maps.app.goo.gl/JJoXtgtT7D7J65XdA" target="_blank" rel="noopener">5135 E Ingram St #8,<br>
-		Mesa, AZ 85205</a></p>
-		<p>Phone: <a href="tel:+14808279111">480-827-9111</a></p>
-		<p>Email: <a href="mailto:service@smithservicesaz.com">service@smithservicesaz.com</a></p>
-		<p>Website: <a href="https://smithservicesaz.com/">www.smithservicesaz.com</a></p>
-	</div>
 </section>
 <section class="related-post section">
 	<div class="inner-col section-wrap">

@@ -256,6 +256,34 @@ a{
 
 /**toggle**/
 summary:hover{cursor:pointer}
+.faq-sctn summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    gap: 4px;
+}
+.faq-sctn summary::after {
+    content: '+';
+    font-size: 32px;
+    line-height: 7px;
+    color: #df1927;
+    font-weight: 400;
+    height: 25px;
+    min-width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.faq-sctn details[open] > summary::after {
+    content: '-'
+}
+.faq-sctn details {
+    border-bottom: 2px solid var(--gray);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    width: 100%;
+}
 
 /*---Header---*/
 .hamb-bars summary::marker {content: '☰';}

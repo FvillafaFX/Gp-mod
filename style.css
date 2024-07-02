@@ -130,19 +130,6 @@ html {
 .entry-content {
     overflow: hidden;
 }
-@media(max-width: 800px){
-	.three-col,
-	.four-col{
-    width: 50%;
-}
-}
-@media(max-width: 500px){
-	.two-col,
-	.three-col,
-	.four-col{
-    width: 100%;
-}
-}
 
 /***BACKGROUND***/
 .parallax{
@@ -255,6 +242,9 @@ a{
 }
 
 /**toggle**/
+details summary::-webkit-details-marker {display: none;}
+details summary{list-style:none!important;counter-increment: none!important;list-style-type: none!important;}
+
 summary:hover{cursor:pointer}
 .faq-sctn summary {
     display: flex;

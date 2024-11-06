@@ -156,30 +156,21 @@ input[type="submit"].btn {
   color: var(--white);
   background-color: var(--secondary);
 }
-.btn.btn-darkblue {
-  background-color: var(--primary);
-  color: var(--white);
-  border-radius: 8px;
+.btn.btn-primary {
+    background-color: var(--primary);
+    color: var(--white)
 }
-.btn.btn-darkblue:hover {
-  background-color: var(--white);
-  color: var(--primary);
+.btn.btn-primary:hover {
+    color: var(--primary);
+    background-color: var(--white)
 }
-.btn.btn-blue {
-  background-color: var(--secondary);
-  color: var(--white);
+.btn.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--white)
 }
-.btn.btn-blue:hover {
-  background-color: var(--white);
-  color: var(--secondary);
-}
-.btn.btn-yellow {
-  background-color: var(--primary);
-  color: var(--secondary);
-}
-.btn.btn-yellow:hover {
-  background-color: var(--white);
-  color: var(--secondary);
+.btn.btn-secondary:hover {
+    color: var(--secondary);
+    background-color: var(--white)
 }
 
 .btn-hdr {
@@ -238,6 +229,8 @@ h6 {
 }
 a {
   color: var(--primary);
+  transition: 0.3s ease;
+  text-decoration: none;
 }
 .p-style {
   margin-bottom: var(--margin-bottom--p);
@@ -249,9 +242,17 @@ a {
   margin-right: auto;
   margin-left: auto;
 }
-a {
-  transition: 0.3s ease;
-  text-decoration: none;
+
+/***HR***/
+.hr-primary {
+    background-color:var(--primary);
+    margin: 10px auto;
+    height: 4px;
+}
+.hr-secondary {
+    background-color:var(--secondary);
+    margin: 10px auto;
+    height: 4px;
 }
 
 /**toggle**/

@@ -717,6 +717,13 @@ header .btn-mn.btn-mn-2 > a {
   .btn-mn {
     display: none;
   }
+  .hamb-bars>summary::marker {content: '';}
+  header .hamb-bars[open]>summary::marker {content: '';}
+  .hamb-bars>summary::-webkit-details-marker {display: none;}
+  .hamb-bars>summary {list-style: none!important; counter-increment: none!important;  list-style-type: none!important;}
+  .hamb-bars summary {position: relative;}
+  header .hamb-bars>summary::after {content: '☰';}
+  header .hamb-bars[open]>summary::after {content: '✕';}
 }
 
 @media (max-width: 500px) {

@@ -16,11 +16,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!--<script src="/wp-content/themes/generatepress-child/splide/splide.min.js"></script>
 	<link rel="stylesheet" href="/wp-content/themes/generatepress-child/splide/splide.min.css">-->
 	<script id="det-mobile">
-	document.addEventListener("DOMContentLoaded", function() {
-	  if (window.innerWidth > 1024) {
-	    document.getElementById("hamb-bars").setAttribute("open", "");
-	  }
-	});
+		document.addEventListener("DOMContentLoaded", function () {
+		  function updateHambBars() {
+		    const hambBars = document.getElementById("hamb-bars");
+		    if (window.innerWidth > 1024) {
+		      hambBars.setAttribute("open", "");
+		    } else {
+		      hambBars.removeAttribute("open");
+		    }
+		  }
+		  // Run the function on page load
+		  updateHambBars();
+		  // Add a listener for window resize
+		  window.addEventListener("resize", updateHambBars);
+		});
 	</script>
 	<?php wp_head(); ?>
 </head>

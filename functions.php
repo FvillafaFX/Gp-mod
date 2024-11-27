@@ -29,6 +29,34 @@ function add_auto_p_tags_to_posts($content) {
 add_filter('the_content', 'add_auto_p_tags_to_posts');
 remove_filter( 'the_content', 'wpautop' );
 
+
+require 'inc/plugin-update-checker/plugin-update-checker.php';
+
+function my_theme_update_checker() {
+    // Load the version from the external PHP file.
+    $version = include get_template_directory() . '/version.php';
+
+    $updateChecker = Puc_v4_Factory::buildUpdateChecker(
+        'https://github.com/FvillafaFX/Gp-mod',
+        __FILE__, // Path to the main theme file or a specific file.
+        'Gp-mod-main'
+    );
+
+    $updateChecker->setVersion($version); // Set the version manually.
+
+    // Optional: Set authentication token for private repositories.
+    $updateChecker->setAuthentication('your-personal-access-token');
+
+    // Optional: Set branch name (default is 'main').
+    $updateChecker->setBranch('main');
+}
+add_action('after_setup_theme', 'my_theme_update_checker');
+
+
+
+
+
+
  //Menu shortcode
 function custom_menu_shortcode($atts) {
     $atts = shortcode_atts( array(

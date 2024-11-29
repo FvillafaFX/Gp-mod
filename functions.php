@@ -30,41 +30,6 @@ add_filter('the_content', 'add_auto_p_tags_to_posts');
 remove_filter( 'the_content', 'wpautop' );
 
 
-require 'inc/plugin-update-checker/plugin-update-checker.php';
-function my_theme_update_checker() {
-    // Load the version from version.php
-    $version_file = get_template_directory() . '/version.php';
-    if (file_exists($version_file)) {
-        $theme_version = include $version_file;
-    } else {
-        $theme_version = '1.0.0'; // Default version if file is missing
-    }
-    // Initialize the update checker
-    $updateChecker = Puc_v4_Factory::buildUpdateChecker(
-        'https://github.com/FvillafaFX/Gp-mod',
-        __FILE__, // Path to the main theme file or a specific file.
-        'Gp-mod-main'
-    );
-    // Set the version explicitly
-    $updateChecker->setVersion($theme_version);
-    // Optional: Set branch name
-    $updateChecker->setBranch('main');
-}
-add_action('after_setup_theme', 'my_theme_update_checker');
-
-
-function exclude_style_css_from_update($source, $remote_source, $theme) {
-    // Path to the theme's style.css file
-    $style_css_path = trailingslashit($theme['destination']) . 'style.css';
-    // Check if the style.css file exists and remove it
-    if (file_exists($style_css_path)) {
-        unlink($style_css_path); // Delete the downloaded style.css during the update
-    }
-    return $source;
-}
-add_filter('upgrader_source_selection', 'exclude_style_css_from_update', 10, 3);
-
-
 
  //Menu shortcode
 function custom_menu_shortcode($atts) {

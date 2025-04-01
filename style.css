@@ -82,11 +82,21 @@ html {
 .section {
   display: flex;
   justify-content: center;
-  padding-right: 16px;
-  padding-left: 16px;
   flex-wrap: wrap;
   background-size: cover;
   position: relative;
+}
+@media(min-width:1025px){
+.section {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+}
+@media(max-width:1024px){
+.section {
+  padding-right: 40px;
+  padding-left: 40px;
+}
 }
 .one-col {
   display: flex;

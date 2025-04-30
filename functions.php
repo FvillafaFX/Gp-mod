@@ -29,6 +29,9 @@ function add_auto_p_tags_to_posts($content) {
 add_filter('the_content', 'add_auto_p_tags_to_posts');
 remove_filter( 'the_content', 'wpautop' );
 
+// Disable visual editor sitewide
+add_filter('user_can_richedit', '__return_false');
+
  //Menu shortcode
 function custom_menu_shortcode($atts) {
     $atts = shortcode_atts( array(

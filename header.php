@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<!--<script src="/wp-content/themes/generatepress-child/splide/splide.min.js"></script>
-	<link rel="stylesheet" href="/wp-content/themes/generatepress-child/splide/splide.min.css">-->
+	<!--<script src="/wp-content/themes/gp-mod/splide/splide.min.js"></script>
+	<link rel="stylesheet" href="/wp-content/themes/gp-mod/splide/splide.min.css">-->
 	<script id="det-mobile">
 		document.addEventListener("DOMContentLoaded", function () {
 		  function updateHambBars() {

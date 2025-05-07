@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<!--<script src="/wp-content/themes/gp-mod/splide/splide.min.js"></script>
 	<link rel="stylesheet" href="/wp-content/themes/gp-mod/splide/splide.min.css">-->
+	<?php if ( has_post_thumbnail() ) : ?>
+	    <meta property="og:image" content="<?php echo esc_url( get_the_post_thumbnail_url( null, 'full' ) ); ?>">
+	<?php endif; ?>
 	<script id="det-mobile">
 		document.addEventListener("DOMContentLoaded", function () {
 		  function updateHambBars() {

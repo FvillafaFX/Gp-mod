@@ -255,3 +255,22 @@ function custom_toc_shortcode($atts) {
     return ob_get_clean();
 }
 add_shortcode('toc', 'custom_toc_shortcode');
+
+
+// Global Section
+function show_element_gp_by_id($atts) {
+    $atts = shortcode_atts([
+        'id' => '',
+        'title' => ''
+    ], $atts);
+
+    $post_id = intval($atts['id']);
+    if (!$post_id) return '';
+
+    $element = get_post($post_id);
+
+    if (!$element || $element->post_type !== 'gp_elements') return '';
+
+    return do_shortcode($element->post_content);
+}
+add_shortcode('elemento_gp', 'show_element_gp_by_id');

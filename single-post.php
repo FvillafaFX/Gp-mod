@@ -19,7 +19,7 @@ while ( have_posts() ) :
 </section>
 <section class="related-post section">
 	<div class="inner-col section-wrap">
-		<h3 class="h3-style">Related Posts:</h3>
+		<h3 class="h3-style no-toc">Related Posts:</h3>
 		<?php echo do_shortcode('[recent-posts count="2"]'); ?>
 	</div>
 </section>

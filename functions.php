@@ -90,7 +90,7 @@ function custom_recent_posts_shortcode($atts) {
     if ($recent_posts->have_posts()) {
         while ($recent_posts->have_posts()) {
             $recent_posts->the_post();
-            $output .= '<li><div class="text"><h4 class="subtitle"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
+            $output .= '<li><div class="text"><h4 class="subtitle no-toc"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
 			
 			$content = get_the_content();
             $trimmed_content = wp_trim_words($content, 17);
@@ -123,7 +123,7 @@ function custom_recent_posts_shortcode_list() {
 	
     if ($queryprop->have_posts()) : 
         while ($queryprop->have_posts()) : $queryprop->the_post();
-            $output .= "<li>" . "<h4 class='blog-subtitle'><a href='" . get_permalink() . "'>" . get_the_title() . "</a></h4></li>";
+            $output .= "<li>" . "<h4 class='blog-subtitle no-toc'><a href='" . get_permalink() . "'>" . get_the_title() . "</a></h4></li>";
         endwhile; 
         wp_reset_query(); // Reset the query
 		
@@ -164,3 +164,94 @@ function details_desktop() {
 }
 
 add_shortcode('open-dtls', 'details_desktop');
+
+// Table of Contents
+function custom_toc_shortcode($atts) {
+    $atts = shortcode_atts([
+        'title' => 'h3,h4',
+        'exclude' => '.no-toc',
+        'container' => 'body',
+    ], $atts, 'toc');
+
+    $headings_selector = $atts['title'];
+    $exclude_selectors = array_filter(array_map('trim', explode(',', $atts['exclude'])));
+    $container_selector = $atts['container'];
+	$uid = uniqid('toc_');
+
+    ob_start();
+    ?>
+    <details class="table-of-contents"  id="<?php echo esc_attr($uid); ?>">
+		<summary>
+			<p class="table-title"><span class="text">Table Of Contents</span><svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H20M4 12H20M4 18H20" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></p>
+		</summary>
+		<div class="content-col">
+        	<ul></ul>
+        </div>
+	</details>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const tocRoot = document.getElementById('<?php echo esc_js($uid); ?>');
+        const tocContainer = tocRoot.querySelector('ul');
+        const mainContainer = document.querySelector('<?php echo esc_js($container_selector); ?>');
+        const excludeSelectors = <?php echo json_encode($exclude_selectors); ?>;
+
+        if (!mainContainer || !tocContainer) return;
+
+        const headings = mainContainer.querySelectorAll('<?php echo esc_js($headings_selector); ?>');
+
+        headings.forEach(function (heading, index) {
+            if (excludeSelectors.some(sel => heading.matches(sel))) return;
+
+            let rawText = heading.textContent.trim();
+            let id = rawText
+                .toLowerCase()
+                .replace(/&/g, 'and')
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+
+            let originalId = id;
+            let counter = 1;
+            while (document.getElementById(id)) {
+                id = originalId + '-' + counter;
+                counter++;
+            }
+
+            heading.id = id;
+
+            const link = document.createElement('a');
+            link.href = '#' + id;
+            link.textContent = rawText;
+
+            const li = document.createElement('li');
+            li.appendChild(link);
+
+            tocContainer.appendChild(li);
+        });
+    });
+    </script>
+
+    <style>
+		.table-of-contents{padding-bottom: clamp(32px, 4%, 72px);}
+		.table-of-contents p.table-title {background-color:var(--primary);color:var(--white);display:flex;align-items: center;justify-content: center;width: fit-content;padding: 12px 28px;margin-bottom: 0;gap: 20px;white-space:nowrap;}
+		.table-of-contents p.table-title svg{ fill: var(--white)!important;stroke: var(--white);width: 40px;height: 40px;}
+		.table-title-col {display: flex;flex-direction: column;}
+		.table-of-contents .content-col {border-bottom: 2px solid var(--primary);}
+		.table-of-contents .content-col ul{margin-bottom: 48px;columns: 2 250px;padding-left:0}
+		.table-of-contents .content-col ul li{ margin-bottom: 20px;margin-left: 8px;margin-right: 8px;}
+		.table-of-contents .content-col ul li a{color: var(--primary);font-weight: 600;font-size: clamp(16px, 1.5vw, 18px)!important;}
+		.table-title-col{width:fit-content}
+		@media(max-width:800px){
+			.table-title-col,.table-of-contents .content-col ul{margin-bottom: 32px}
+		}
+		@media(max-width:600px){
+			.table-of-contents .content-col ul li{width: 100%;}
+			.table-of-contents .content-col ul{padding-left: 20px}
+		}
+    </style>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('toc', 'custom_toc_shortcode');

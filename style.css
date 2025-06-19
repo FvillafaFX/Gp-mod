@@ -16,13 +16,13 @@ Updated: 2023-08-22 19:38:40
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url(/wp-content/uploads/fonts/Poppins-Regular.ttf);
+  src: url(/wp-content/themes/gp-mod/fonts/Poppins-Light.ttf);
 }
 @font-face {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  src: url(/wp-content/uploads/fonts/Poppins-Black.ttf);
+  src: url(/wp-content/themes/gp-mod/fonts/Poppins-Light.ttf);
 }
 
 :root {

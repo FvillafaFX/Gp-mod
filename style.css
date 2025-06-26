@@ -322,7 +322,7 @@ summary:hover {
   display: flex;
   justify-content: center;
   z-index: 1000;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 .hdr-wrp {
   width: 100%;

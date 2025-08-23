@@ -713,6 +713,7 @@ header .btn-mn.btn-mn-2 > a {
     box-shadow: 0 1px 15px 5px rgba(0, 0, 0, 0.25);
     left: 0;
     width: 100%;
+    top:100%;
   }
   header .menu {
     flex-direction: column;

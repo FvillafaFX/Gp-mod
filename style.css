@@ -714,6 +714,8 @@ header .btn-mn.btn-mn-2 > a {
     left: 0;
     width: 100%;
     top:100%;
+    max-height: 60vh;
+    overflow: scroll;
   }
   header .menu {
     flex-direction: column;

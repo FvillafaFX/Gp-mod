@@ -86,12 +86,8 @@ html {
   background-size: cover;
   position: relative;
 }
-@media(min-width:1025px){
-.section {
-  padding-right: 40px;
-  padding-left: 40px;
-}
-}
+.section {padding:0 40px;}
+
 @media(max-width:1024px){
 .section {
   padding-right: 16px;

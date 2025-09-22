@@ -1,0 +1,60 @@
+<style>
+.bottom-form {display:flex;flex-wrap:wrap;gap: 12px;justify-content: space-between;}
+.bottom-form input:not([type="submit"]){background-color:transparent;border:none;border-bottom: 2px solid var(--primary);max-width:100%;width:100%;min-height: 43px;min-width: 13px;}
+span.wpcf7-not-valid-tip {font-size:12px}
+.bottom-form .wpcf7-form-control-wrap {max-width:100%;width:100%}
+.bottom-form textarea{height: 98px;border:none;border-bottom: 2px solid var(--primary);min-height: 98px;background-color: var(--white);}
+.bottom-form .col-1 label,
+.bottom-form .col-2 label,
+.bottom-form .col-3 label,
+.bottom-form .col-4 label{display:none}
+.bottom-form .col-1,
+.bottom-form .col-2,
+.bottom-form .col-3{width: calc(33% - 8px);display:flex;justify-content:space-between;gap:8px;flex-wrap: wrap;}
+.bottom-form .col-4 .wpcf7-form-control-wrap,
+.bottom-form .col-5 .wpcf7-form-control-wrap{width:100%}
+.bottom-form .wpcf7-list-item label{display:flex;align-items: center;}
+.bottom-form .wpcf7-radio{display:flex;gap:8px}
+.bottom-form .col-5{display:flex;justify-content:space-between;position: relative;text-align:left;width: 100%;gap: 4px;align-items: center;}
+.bottom-form .col-5 .wpcf7-list-item.first {margin-left:0}
+.bottom-form .col-5 .wpcf7-list-item-label{font-size:14px}
+.bottom-form .wpcf7-spinner{position:absolute;right:0;top:0;bottom:0;margin:auto;}
+.bottom-form .col-5 .bst-way>label{width:100%;display:block}
+.bottom-form .wpcf7-list-item{margin-left:4px}
+.bottom-form input[type="submit"]{background-color:var(--primary);font-weight:700;text-transform:uppercase;min-width:fit-content;}
+.bottom-form input[type="submit"]:hover{background-color:var(--primary)}
+.bottom-form .col-4{width:100%}
+.bottom-form .bst-way {display:flex;gap:12px;align-items: center;}
+@media(max-width:500px){
+.bottom-form .col-5{flex-direction:column;text-align:center}
+.bottom-form .wpcf7-radio{justify-content:center}
+.bottom-form input[type="submit"]{width:100%}
+.bottom-form .col-1, .bottom-form .col-2, .bottom-form .col-3{width:100%}
+.bottom-form .bst-way{gap:4px; flex-direction:column;align-items:center}
+}
+</style>
+<div class="bottom-form">
+<div class="col-1">
+<label for="first-name-bt">Name</label>
+[text* your-name-bt id:first-name-bt placeholder "Name*"]
+</div>
+<div class="col-2">
+<label for="your-email-bt">Email</label>
+[email* your-email-bt id:your-email-bt placeholder "Email*"]
+</div>
+<div class="col-3">
+<label for="your-phone-bt">Phone</label>
+[tel your-phone-bt id:your-phone-bt placeholder "Phone"]
+</div>
+<div class="col-4">
+<label for="your-message-bt">Your Message*</label>
+[textarea* your-message-bt minlength:20 id:your-message-bt placeholder "Your Message*"]
+</div>
+<div class="col-5">
+<div class="bst-way">
+<label>Best Way to Reply:</label>
+[radio bst-way-bt use_label_element default:1 "Email" "Phone" "Text"]
+</div>
+[submit "Send"]
+</div>
+</div>

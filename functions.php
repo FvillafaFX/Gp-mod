@@ -93,8 +93,17 @@ function custom_recent_posts_shortcode($atts) {
             $output .= '<li><div class="text"><h4 class="subtitle no-toc"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
 			
 			$content = get_the_content();
-            $trimmed_content = wp_trim_words($content, 17);
-            $output .= '<p class="post-content">' . $trimmed_content . '</p>';
+			if (preg_match('/\[vc_column_text.*?\](.*?)\[\/vc_column_text\]/is', $content, $matches)) {
+				$content = $matches[1];
+			}
+			$content = strip_shortcodes($content);
+			$plain = wp_strip_all_tags($content);
+			if (empty(trim($plain))) {
+				$plain = get_the_excerpt();
+			}
+			$trimmed_content = wp_trim_words($plain, 17);
+			$output .= '<p class="post-content">' . esc_html($trimmed_content) . '</p>';
+			
 			$output .= '<a class="read-more" href="' . get_permalink() . '">Continue Reading</a></div>';
 			
 			if (has_post_thumbnail()) {
@@ -274,3 +283,4 @@ function show_element_gp_by_id($atts) {
     return do_shortcode($element->post_content);
 }
 add_shortcode('elemento_gp', 'show_element_gp_by_id');
+

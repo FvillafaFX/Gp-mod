@@ -69,7 +69,7 @@ function custom_recent_posts_shortcode($atts) {
 	$atts = shortcode_atts( array(
         'count' => 2,
         'order' => 'DESC',
-        'exclude_current' => false,
+        'exclude_current' => true,
     ), $atts );
 	
     $query_args = array(
@@ -283,4 +283,5 @@ function show_element_gp_by_id($atts) {
     return do_shortcode($element->post_content);
 }
 add_shortcode('elemento_gp', 'show_element_gp_by_id');
+
 

@@ -1,47 +1,58 @@
-(function ($) {
-    function createMobileSubmenuDetails() {
-        $('.menu-item-has-children').each(function () {
-            var $menuItem = $(this);
-            var $submenu = $menuItem.children('.sub-menu');
-            var $link = $menuItem.children('a');
+// Vanilla JS Version
+(function () {
+  function createMobileSubmenuDetails() {
+    const isMobile = window.matchMedia("(max-width: 1024px)").matches;
 
-            // Check if we're on a mobile device based on screen width
-            if (window.matchMedia('(max-width: 1024px)').matches) {
-                // Apply the mobile submenu structure only if it hasn't been applied yet
-                if (!$menuItem.find('details').length) {
-                    // Create 'details' and 'summary' elements
-                    var $details = $('<details></details>');
-                    var $summary = $('<summary></summary>');
+    document.querySelectorAll(".menu-item-has-children").forEach((menuItem) => {
+      const submenu = menuItem.querySelector(":scope > .sub-menu");
+      const link = menuItem.querySelector(":scope > a");
 
-                    $summary.append($link); // Move the link inside 'summary'
-                    $details.append($summary).append($submenu); // Add 'summary' and submenu into 'details'
-                    $menuItem.prepend($details); // Insert the 'details' back into the menu item
-                }
-            } else {
-                // Revert changes if resizing to desktop width
-                var $details = $menuItem.children('details');
-                if ($details.length) {
-                    var $summary = $details.children('summary');
-                    var $originalLink = $summary.children('a');
+      if (!submenu || !link) return;
 
-                    // Move link and submenu back to their original positions
-                    $menuItem.prepend($originalLink);
-                    $menuItem.append($submenu);
+      if (isMobile) {
+        // Apply the mobile submenu structure only if it hasn't been applied yet
+        if (!menuItem.querySelector("details")) {
+          const details = document.createElement("details");
+          const summary = document.createElement("summary");
 
-                    // Remove 'details' element
-                    $details.remove();
-                }
-            }
-        });
-    }
+          // Move the link into summary
+          summary.appendChild(link);
 
-    // Trigger the submenu toggle function on document ready and on resize
-    $(document).ready(function () {
-        createMobileSubmenuDetails();
+          // Put summary + submenu inside details
+          details.appendChild(summary);
+          details.appendChild(submenu);
 
-        // Handle window resizing
-        $(window).on('resize', function () {
-            createMobileSubmenuDetails();
-        });
+          // Insert details at the beginning of the menu item
+          menuItem.insertBefore(details, menuItem.firstChild);
+        }
+      } else {
+        // Revert changes if resizing to desktop width
+        const details = menuItem.querySelector(":scope > details");
+        if (details) {
+          const summary = details.querySelector(":scope > summary");
+          const originalLink = summary ? summary.querySelector(":scope > a") : null;
+
+          if (originalLink) {
+            // Put link back as first child (like original behavior)
+            menuItem.insertBefore(originalLink, menuItem.firstChild);
+          }
+
+          // Put submenu back at the end of menu item
+          menuItem.appendChild(submenu);
+
+          // Remove details wrapper
+          details.remove();
+        }
+      }
     });
-})(jQuery);
+  }
+
+  // Run on DOM ready + on resize
+  document.addEventListener("DOMContentLoaded", () => {
+    createMobileSubmenuDetails();
+
+    window.addEventListener("resize", () => {
+      createMobileSubmenuDetails();
+    });
+  });
+})();
